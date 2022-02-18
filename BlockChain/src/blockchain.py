@@ -169,7 +169,7 @@ class Blockchain(object):
         self.chain.append(newBlock)
         self.length +=1
         payMiner = Transaction("Miner Rewards", miner, self.minerRewards)
-        self.pendingTransactions.append(payMiner)
+        newBlock.transactions.append(payMiner)
         print("Mining Transactions Success!,Miner Paid")
         return True
 
