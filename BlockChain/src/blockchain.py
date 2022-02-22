@@ -164,12 +164,12 @@ class Blockchain(object):
             transacSlice.append(self.pendingTransactions.pop(0))
         hashVal = self.chain[-1].hash
         newBlock = Block(len(self.chain), transacSlice, prev=hashVal)
-        newBlock.mineBlock(self.difficulty)
-        newBlock.miner = miner
-        self.chain.append(newBlock)
-        self.length +=1
         payMiner = Transaction("Miner Rewards", miner, self.minerRewards)
         newBlock.transactions.append(payMiner)
+        newBlock.miner = miner
+        newBlock.mineBlock(self.difficulty)
+        self.chain.append(newBlock)
+        self.length +=1
         print("Mining Transactions Success!,Miner Paid")
         return True
 

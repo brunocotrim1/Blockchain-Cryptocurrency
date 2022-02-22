@@ -49,6 +49,7 @@ class handlerHTTP(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header('content-type','application/json')
             self.end_headers()
+            blockChain.consensus()
             response = {"balance":blockChain.balance(self.path.split("/")[2])}
             print(response)
             self.wfile.write(json.dumps(response, sort_keys=True).encode())
